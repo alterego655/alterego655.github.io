@@ -4,16 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xuneng Zhou | Tech Blog</title>
+    <title>Xuneng Zhou | Data Systems Engineer</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header>
         <nav>
-            <h1>Xuneng Zhou</h1>
-            <div>
+            <a href="/" class="logo">Xuneng Zhou</a>
+            <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#blog">Blog</a>
                 <a href="#about">About</a>
@@ -22,44 +23,84 @@
     </header>
 
     <main>
-        <article class="blog-post">
-            <h2>Building Scalable Microservices with Docker</h2>
-            <div class="post-meta">
-                <span>March 15, 2024</span>
-                <span class="tag">Docker</span>
-                <span class="tag">Microservices</span>
+        <aside class="sidebar">
+            <div class="profile-section">
+                <img src="your-photo.jpg" alt="Xuneng Zhou" class="profile-image">
+                <h2>Xuneng Zhou</h2>
+                <p>Data Systems Engineer specializing in distributed systems and large-scale data processing</p>
+                <div class="expertise-tags">
+                    <span class="tag">Distributed Systems</span>
+                    <span class="tag">Big Data</span>
+                    <span class="tag">Cloud Architecture</span>
+                </div>
             </div>
-            <p>In this post, I explore the best practices for building and deploying scalable microservices using Docker
-                containers...</p>
-            <a href="#read-more">Read More →</a>
-        </article>
+        </aside>
 
-        <article class="blog-post">
-            <h2>Getting Started with React Hooks</h2>
-            <div class="post-meta">
-                <span>March 10, 2024</span>
-                <span class="tag">React</span>
-                <span class="tag">JavaScript</span>
-            </div>
-            <p>React Hooks have revolutionized how we write React components. Let's dive into how to use them
-                effectively...</p>
-            <a href="#read-more">Read More →</a>
-        </article>
+        <div class="content-section">
+            <section class="featured-section">
+                <h1 class="section-title">Building Scalable Data Systems</h1>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">5+ Years</div>
+                        <div>Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50TB+</div>
+                        <div>Data Processed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">99.9%</div>
+                        <div>System Uptime</div>
+                    </div>
+                </div>
+            </section>
 
-        <article class="blog-post">
-            <h2>Python vs JavaScript: When to Use Each</h2>
-            <div class="post-meta">
-                <span>March 5, 2024</span>
-                <span class="tag">Python</span>
-                <span class="tag">JavaScript</span>
-            </div>
-            <p>A comprehensive comparison of Python and JavaScript, exploring their strengths and ideal use cases...</p>
-            <a href="#read-more">Read More →</a>
-        </article>
+            <section class="blog-posts">
+                <h2 class="section-title">Latest Articles</h2>
+                <article class="blog-post">
+                    <h2>Designing Fault-Tolerant Distributed Systems</h2>
+                    <div class="post-meta">
+                        <span>March 15, 2024</span>
+                        <span class="tag">System Design</span>
+                        <span class="tag">Fault Tolerance</span>
+                    </div>
+                    <p>An in-depth exploration of building resilient distributed systems that can handle failures
+                        gracefully while maintaining data consistency...</p>
+                    <a href="#read-more">Read More →</a>
+                </article>
+
+                <article class="blog-post">
+                    <h2>Optimizing Large-Scale Data Processing Pipelines</h2>
+                    <div class="post-meta">
+                        <span>March 10, 2024</span>
+                        <span class="tag">Big Data</span>
+                        <span class="tag">Performance</span>
+                    </div>
+                    <p>Techniques and strategies for building efficient data processing pipelines that can handle
+                        petabyte-scale datasets...</p>
+                    <a href="#read-more">Read More →</a>
+                </article>
+
+                <article class="blog-post">
+                    <h2>Real-time Analytics with Stream Processing</h2>
+                    <div class="post-meta">
+                        <span>March 5, 2024</span>
+                        <span class="tag">Stream Processing</span>
+                        <span class="tag">Analytics</span>
+                    </div>
+                    <p>Implementing real-time analytics systems using modern stream processing frameworks...</p>
+                    <a href="#read-more">Read More →</a>
+                </article>
+            </section>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2024 Xuneng Zhou | Tech Blog</p>
+        <p>&copy; 2024 Xuneng Zhou | Data Systems Engineer</p>
+        <div class="social-links">
+            <a href="https://github.com/yourusername"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://linkedin.com/in/yourusername"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
     </footer>
 </body>
 

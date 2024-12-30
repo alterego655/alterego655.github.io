@@ -1,81 +1,215 @@
+:root {
+    --primary-color: #2d5af6;
+    --secondary-color: #171717;
+    --bg-color: #fafafa;
+    --text-color: #333;
+    --code-bg: #f4f4f4;
+    --border-color: #e1e4e8;
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #2d3748;
-    background-color: #f8f9fa;
+    color: var(--text-color);
+    background-color: var(--bg-color);
 }
 
 header {
-    background-color: #ffffff;
-    color: #2d3748;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     padding: 1.5em;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
 }
 
 nav {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-nav a {
-    color: #2d3748;
+.logo {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--primary-color);
     text-decoration: none;
-    margin-left: 2em;
-    font-weight: 500;
 }
 
-nav a:hover {
-    color: #4a5568;
+.nav-links {
+    display: flex;
+    gap: 2em;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 main {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 7em auto 4em;
     padding: 0 2em;
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 3fr);
+    gap: 3em;
+}
+
+.sidebar {
+    position: sticky;
+    top: 8em;
+    height: fit-content;
+}
+
+.profile-section {
+    background: white;
+    padding: 2em;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2em;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    margin-bottom: 1em;
+}
+
+.expertise-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+
+.content-section {
+    background: white;
+    padding: 3em;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    font-size: 2em;
+    color: var(--secondary-color);
+    margin-bottom: 1em;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5em;
 }
 
 .blog-post {
     background: white;
     padding: 2em;
     margin-bottom: 2em;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-2px);
 }
 
 .blog-post h2 {
     margin-top: 0;
-    color: #1a202c;
+    color: var(--secondary-color);
+    font-size: 1.5em;
 }
 
 .post-meta {
-    color: #718096;
+    color: #666;
     font-size: 0.9em;
     margin-bottom: 1em;
-}
-
-footer {
-    background-color: #ffffff;
-    padding: 2em;
-    text-align: center;
-    color: #718096;
-    border-top: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 1em;
 }
 
 .tag {
     display: inline-block;
-    background: #e2e8f0;
+    background: var(--code-bg);
     padding: 0.2em 0.8em;
-    border-radius: 15px;
+    border-radius: 20px;
     font-size: 0.9em;
-    margin-right: 0.5em;
-    color: #4a5568;
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+}
+
+.featured-section {
+    margin-bottom: 3em;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5em;
+    margin: 2em 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5em;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.stat-number {
+    font-size: 2em;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+footer {
+    background-color: white;
+    padding: 2em;
+    text-align: center;
+    color: #666;
+    border-top: 1px solid var(--border-color);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    margin-top: 1em;
+}
+
+.social-links a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
 }

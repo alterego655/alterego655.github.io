@@ -1,19 +1,32 @@
-# Tech Blog
+# Data Systems Engineering Blog
 
-A personal tech blog where I share my thoughts, experiences, and insights about software development, cloud computing, and other technical topics.
+A technical blog focusing on distributed systems, data engineering, and scalable architecture. Here, I share insights and experiences from building large-scale data-intensive systems.
+
+## Focus Areas
+
+- Distributed Systems Architecture
+- Large-scale Data Processing
+- Stream Processing Systems
+- Database Systems
+- System Performance Optimization
+- Fault Tolerance & Reliability
 
 ## Features
 
-- Clean and minimalist design
-- Responsive layout
-- Tag-based categorization
-- Easy to maintain and update
+- Technical deep-dives into system design
+- Performance optimization case studies
+- Architecture decision records
+- Best practices for data-intensive applications
 
-## Technologies Used
+## Technologies & Topics Covered
 
-- HTML5
-- CSS3
-- Google Fonts (Inter)
+- Distributed Systems
+- Big Data Processing
+- Stream Processing
+- Database Systems
+- Cloud Architecture
+- System Design
+- Performance Optimization
 
 ## Local Development
 
