@@ -5,6 +5,7 @@
     --border-color: #e1e4e8;
     --link-color: #0366d6;
     --gray-text: #586069;
+    --bg-pattern: #f6f8fa;
 }
 
 body {
@@ -13,7 +14,12 @@ body {
     padding: 0;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--bg-color);
+    background-color: var(--bg-pattern);
+    background-image:
+        linear-gradient(var(--bg-pattern) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg-pattern) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: -1px -1px;
 }
 
 header {
@@ -142,7 +148,10 @@ footer {
     max-width: 960px;
     margin: 2em auto;
     padding: 2em 1em;
-    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
     color: var(--gray-text);
     text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
