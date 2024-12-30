@@ -1,40 +1,26 @@
-# Data Systems Engineering Blog
+# Xuneng Zhou's Personal Website
 
-A technical blog focusing on distributed systems, data engineering, and scalable architecture. Here, I share insights and experiences from building large-scale data-intensive systems.
+Personal website and blog focusing on distributed systems, data engineering, and scalable architecture.
 
-## Focus Areas
+## About
 
+I am a Data Systems Engineer specializing in:
 - Distributed Systems Architecture
 - Large-scale Data Processing
 - Stream Processing Systems
 - Database Systems
 - System Performance Optimization
-- Fault Tolerance & Reliability
 
-## Features
+## Blog Topics
 
 - Technical deep-dives into system design
 - Performance optimization case studies
 - Architecture decision records
 - Best practices for data-intensive applications
 
-## Technologies & Topics Covered
+## Contact
 
-- Distributed Systems
-- Big Data Processing
-- Stream Processing
-- Database Systems
-- Cloud Architecture
-- System Design
-- Performance Optimization
-
-## Local Development
-
-To run this blog locally:
-
-1. Clone the repository
-2. Open `index.html` in your browser
-3. Make changes to the content as needed
+Email: your.email@example.com
 
 ## License
 
