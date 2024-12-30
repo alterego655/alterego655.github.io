@@ -1,24 +1,81 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
     padding: 0;
-    text-align: center;
+    line-height: 1.6;
+    color: #2d3748;
+    background-color: #f8f9fa;
 }
 
 header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 1em;
+    background-color: #ffffff;
+    color: #2d3748;
+    padding: 1.5em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: #2d3748;
+    text-decoration: none;
+    margin-left: 2em;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #4a5568;
 }
 
 main {
-    margin: 2em;
+    max-width: 800px;
+    margin: 7em auto 4em;
+    padding: 0 2em;
+}
+
+.blog-post {
+    background: white;
+    padding: 2em;
+    margin-bottom: 2em;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post h2 {
+    margin-top: 0;
+    color: #1a202c;
+}
+
+.post-meta {
+    color: #718096;
+    font-size: 0.9em;
+    margin-bottom: 1em;
 }
 
 footer {
-    background-color: #f1f1f1;
-    padding: 1em;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    background-color: #ffffff;
+    padding: 2em;
+    text-align: center;
+    color: #718096;
+    border-top: 1px solid #e2e8f0;
+}
+
+.tag {
+    display: inline-block;
+    background: #e2e8f0;
+    padding: 0.2em 0.8em;
+    border-radius: 15px;
+    font-size: 0.9em;
+    margin-right: 0.5em;
+    color: #4a5568;
 }
