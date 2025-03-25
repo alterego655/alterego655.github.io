@@ -4,92 +4,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xuneng Zhou</title>
+    <title>Xuneng Zhou | Data Systems Engineer</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <nav>
-            <div class="nav-content">
-                <a href="/" class="nav-title">Xuneng Zhou</a>
-                <div class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#posts">Posts</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">XZ</a>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
                 </div>
-            </div>
-        </nav>
+                <ul class="nav-menu">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#blogs" class="nav-link">Blogs</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <section class="profile-section">
-            <img src="your-photo.jpg" alt="Xuneng Zhou" class="profile-image">
-            <div class="profile-info">
-                <h1>Xuneng Zhou</h1>
-                <h2>Data Systems Engineer</h2>
-                <p>I specialize in building large-scale distributed systems and data processing pipelines. My work
-                    focuses on designing and implementing high-performance, fault-tolerant data systems.</p>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Xuneng Zhou</h1>
+                        <h2>Data Systems Engineer</h2>
+                        <p>Exploring the intersections of DBMS implementations, Operating Systems, and Computer
+                            Architecture</p>
+                        <div class="hero-cta">
+                            <a href="#about" class="btn btn-primary">About Me</a>
+                            <a href="#blogs" class="btn btn-secondary">Read My Blog</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="your-photo.jpg" alt="Xuneng Zhou">
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="section" id="interests">
-            <h2 class="section-title">Interests</h2>
-            <ul class="interests-list">
-                <li>Distributed Systems</li>
-                <li>Database Systems</li>
-                <li>Stream Processing</li>
-                <li>System Performance Optimization</li>
-                <li>Large-scale Data Processing</li>
-            </ul>
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I am a Data Systems enthusiast with broad interests in distributed systems architecture,
+                            large-scale data processing, database systems, and system performance optimization.</p>
+
+                        <h3>Interests</h3>
+                        <div class="tags">
+                            <span class="tag">Distributed Systems</span>
+                            <span class="tag">Large-scale Data Processing</span>
+                            <span class="tag">Database Systems</span>
+                            <span class="tag">Operating Systems</span>
+                            <span class="tag">Computer Architecture</span>
+                            <span class="tag">System Performance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="section" id="posts">
-            <h2 class="section-title">Recent Posts</h2>
-            <article class="blog-post">
-                <a href="#post1">
-                    <h3>Designing Fault-Tolerant Distributed Systems</h3>
-                </a>
-                <div class="post-meta">
-                    March 15, 2024 • 15 min read
-                </div>
-                <p>An in-depth exploration of building resilient distributed systems that can handle failures gracefully
-                    while maintaining data consistency...</p>
-            </article>
+        <!-- Blogs Section -->
+        <section id="blogs" class="section">
+            <div class="container">
+                <h2 class="section-title">Blog Posts</h2>
 
-            <article class="blog-post">
-                <a href="#post2">
-                    <h3>Optimizing Large-Scale Data Processing Pipelines</h3>
-                </a>
-                <div class="post-meta">
-                    March 10, 2024 • 12 min read
+                <div class="blog-filters">
+                    <button class="filter-btn active" data-filter="latest">Latest Posts</button>
+                    <button class="filter-btn" data-filter="archive">Archive</button>
                 </div>
-                <p>Techniques and strategies for building efficient data processing pipelines that can handle
-                    petabyte-scale datasets...</p>
-            </article>
 
-            <article class="blog-post">
-                <a href="#post3">
-                    <h3>Real-time Analytics with Stream Processing</h3>
-                </a>
-                <div class="post-meta">
-                    March 5, 2024 • 10 min read
+                <div class="blog-posts" id="latest-posts">
+                    <article class="blog-card">
+                        <div class="blog-meta">
+                            <span class="blog-date">March 15, 2024</span>
+                            <div class="blog-tags">
+                                <span class="tag">DBMS</span>
+                                <span class="tag">Performance</span>
+                            </div>
+                        </div>
+                        <h3 class="blog-title">Copy-on-Write Trie: Implementation and Performance Analysis</h3>
+                        <p class="blog-excerpt">An article about Copy-on-Write Trie data structure, course project of
+                            CMU 15-445...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-meta">
+                            <span class="blog-date">February 20, 2024</span>
+                            <div class="blog-tags">
+                                <span class="tag">Distributed Systems</span>
+                                <span class="tag">Architecture</span>
+                            </div>
+                        </div>
+                        <h3 class="blog-title">Designing Fault-Tolerant Distributed Database Systems</h3>
+                        <p class="blog-excerpt">An exploration of techniques to build resilient distributed database
+                            systems...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-meta">
+                            <span class="blog-date">January 10, 2024</span>
+                            <div class="blog-tags">
+                                <span class="tag">Systems</span>
+                                <span class="tag">OS</span>
+                            </div>
+                        </div>
+                        <h3 class="blog-title">I/O Schedulers: A Deep Dive</h3>
+                        <p class="blog-excerpt">Analyzing different I/O scheduling algorithms and their impact on system
+                            performance...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </article>
                 </div>
-                <p>Implementing real-time analytics systems using modern stream processing frameworks...</p>
-            </article>
+
+                <div class="blog-posts hidden" id="archive-posts">
+                    <div class="archive-year">
+                        <h3>2024</h3>
+                        <ul class="archive-list">
+                            <li><span class="archive-date">Mar 15</span> <a href="#">Copy-on-Write Trie: Implementation
+                                    and Performance Analysis</a></li>
+                            <li><span class="archive-date">Feb 20</span> <a href="#">Designing Fault-Tolerant
+                                    Distributed Database Systems</a></li>
+                            <li><span class="archive-date">Jan 10</span> <a href="#">I/O Schedulers: A Deep Dive</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="archive-year">
+                        <h3>2023</h3>
+                        <ul class="archive-list">
+                            <li><span class="archive-date">Dec 05</span> <a href="#">Memory Management in Modern
+                                    Databases</a></li>
+                            <li><span class="archive-date">Nov 12</span> <a href="#">Query Optimization Techniques</a>
+                            </li>
+                            <li><span class="archive-date">Oct 03</span> <a href="#">Concurrency Control Mechanisms</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="section" id="contact">
-            <h2 class="section-title">Contact</h2>
-            <p>Email: your.email@example.com</p>
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+
+                <div class="project-group">
+                    <h3 class="group-title">Database Systems</h3>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>SimpleDB</h4>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                            <p>A lightweight relational database system implementing basic CRUD operations with ACID
+                                properties.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C++</span>
+                                <span class="tech-tag">SQL</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>Distributed Query Engine</h4>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <p>A distributed query processing engine capable of executing SQL queries across multiple
+                                nodes.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Rust</span>
+                                <span class="tech-tag">gRPC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-group">
+                    <h3 class="group-title">Systems Programming</h3>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>Custom Memory Allocator</h4>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <p>A high-performance memory allocator optimized for multi-threaded applications.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C</span>
+                                <span class="tech-tag">Assembly</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>File System Implementation</h4>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <p>A Unix-like file system implementation supporting basic file operations and journaling.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C</span>
+                                <span class="tech-tag">Linux</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <div class="contact-content">
+                    <p>Feel free to reach out for collaborations or just a chat.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:Xunengzhou@gmail.com">Xunengzhou@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/yourusername">GitHub</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://linkedin.com/in/yourusername">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2024 Xuneng Zhou</p>
+        <div class="container">
+            <p>© 2024 Xuneng Zhou. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        // Toggle mobile menu
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Blog filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                // Toggle active class
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                // Show selected posts
+                const filter = this.getAttribute('data-filter');
+                document.querySelectorAll('.blog-posts').forEach(posts => {
+                    posts.classList.add('hidden');
+                });
+                document.getElementById(`${filter}-posts`).classList.remove('hidden');
+            });
+        });
+    </script>
 </body>
 
 </html>
