@@ -1,26 +1,23 @@
 # Xuneng Zhou's Personal Website
 
-Personal website and blog focusing on distributed systems, data engineering, and scalable architecture.
+Personal website and blog focusing on data system.
 
 ## About
 
-I am a Data Systems Engineer specializing in:
-- Distributed Systems Architecture
-- Large-scale Data Processing
-- Stream Processing Systems
-- Database Systems
+I have broad interests in learning and building system:
+- Database Systems, HW-SW co-design, transaction, storage
 - System Performance Optimization
+- System open source course learning
 
 ## Blog Topics
 
-- Technical deep-dives into system design
+- OSS contribution, mainly postgres
 - Performance optimization case studies
-- Architecture decision records
-- Best practices for data-intensive applications
+- System open course learning
 
 ## Contact
 
-Email: your.email@example.com
+Email: xunengzhou@gmail.com
 
 ## License
 

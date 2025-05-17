@@ -35,7 +35,6 @@
                 <div class="hero-content">
                     <div class="hero-text">
                         <h1>Xuneng Zhou</h1>
-                        <h2>Data Systems Engineer</h2>
                         <p>Exploring the intersections of DBMS implementations, Operating Systems, and Computer
                             Architecture</p>
                         <div class="hero-cta">
@@ -56,14 +55,13 @@
                 <h2 class="section-title">About Me</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>I am a Data Systems enthusiast with broad interests in distributed systems architecture,
-                            large-scale data processing, database systems, and system performance optimization.</p>
+                        <p>I am a Data Systems enthusiast with broad interests in database, OSS, and the intersection
+                            of HW-SW co-design.</p>
 
                         <h3>Interests</h3>
                         <div class="tags">
-                            <span class="tag">Distributed Systems</span>
-                            <span class="tag">Large-scale Data Processing</span>
                             <span class="tag">Database Systems</span>
+                            <span class="tag">OSS Contribution</span>
                             <span class="tag">Operating Systems</span>
                             <span class="tag">Computer Architecture</span>
                             <span class="tag">System Performance</span>
@@ -86,29 +84,33 @@
                 <div class="blog-posts" id="latest-posts">
                     <article class="blog-card">
                         <div class="blog-meta">
-                            <span class="blog-date">March 15, 2024</span>
+                            <span class="blog-date">May 17, 2025</span>
                             <div class="blog-tags">
-                                <span class="tag">DBMS</span>
-                                <span class="tag">Performance</span>
+                                <span class="tag">Operating Systems</span>
+                                <span class="tag">concurrency</span>
+                                <span class="tag">Open source course</span>
+                                <span class="tag">Vibe coding</span>
                             </div>
                         </div>
-                        <h3 class="blog-title">Copy-on-Write Trie: Implementation and Performance Analysis</h3>
-                        <p class="blog-excerpt">An article about Copy-on-Write Trie data structure, course project of
-                            CMU 15-445...</p>
+                        <h3 class="blog-title">Pintos-Lab1&2: Threads and User Programs?</h3>
+                        <p class="blog-excerpt">An article about the implementation of threads and user programs in
+                            Pintos, a simple operating system.</p>
                         <a href="#" class="read-more">Read More →</a>
                     </article>
 
                     <article class="blog-card">
                         <div class="blog-meta">
-                            <span class="blog-date">February 20, 2024</span>
+                            <span class="blog-date">May 20, 2025</span>
                             <div class="blog-tags">
-                                <span class="tag">Distributed Systems</span>
-                                <span class="tag">Architecture</span>
+                                <span class="tag">Database Systems</span>
+                                <span class="tag">Open source course</span>
+                                <span class="tag">Transaction</span>
                             </div>
                         </div>
-                        <h3 class="blog-title">Designing Fault-Tolerant Distributed Database Systems</h3>
-                        <p class="blog-excerpt">An exploration of techniques to build resilient distributed database
-                            systems...</p>
+                        <h3 class="blog-title">An optimistic multi-version concurrency control (MVCC) implementation in
+                            bustub</h3>
+                        <p class="blog-excerpt">An Hyper & Duckdb-like MVCC implementation in bustub, CMU 15-445 course
+                            project4.</p>
                         <a href="#" class="read-more">Read More →</a>
                     </article>
 
@@ -165,48 +167,62 @@
                     <div class="projects-grid">
                         <div class="project-card">
                             <div class="project-header">
-                                <h4>SimpleDB</h4>
+                                <h4>bustub</h4>
                                 <div class="project-links">
                                     <a href="#" class="project-link"><i class="fab fa-github"></i></a>
                                     <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                                 </div>
                             </div>
-                            <p>A lightweight relational database system implementing basic CRUD operations with ACID
-                                properties.</p>
+                            <p>A series of hands-on database system projects that build a fully functional RDBMS from
+                                scratch. Implemented key components including a buffer pool manager, B+ tree index,
+                                query execution engine, and concurrency control — all in modern C++.
+                            </p>
                             <div class="project-tech">
                                 <span class="tech-tag">C++</span>
                                 <span class="tech-tag">SQL</span>
-                            </div>
-                        </div>
-
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h4>Distributed Query Engine</h4>
-                                <div class="project-links">
-                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                            <p>A distributed query processing engine capable of executing SQL queries across multiple
-                                nodes.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Rust</span>
-                                <span class="tech-tag">gRPC</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-group">
-                    <h3 class="group-title">Systems Programming</h3>
+                    <h3 class="group-title">Operating Systems</h3>
                     <div class="projects-grid">
                         <div class="project-card">
                             <div class="project-header">
-                                <h4>Custom Memory Allocator</h4>
+                                <h4>pintos</h4>
                                 <div class="project-links">
                                     <a href="#" class="project-link"><i class="fab fa-github"></i></a>
                                 </div>
                             </div>
-                            <p>A high-performance memory allocator optimized for multi-threaded applications.</p>
+                            <p>A teaching operating system framework for the x86 architecture, designed to deepen
+                                understanding of OS internals through hands-on development. Over a series of labs, I
+                                implemented kernel thread scheduling with priority donation, user program loading with
+                                system calls, demand paging for virtual memory, and memory-mapped file support. Each
+                                component was built in C and tested on x86 emulators like QEMU.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C</span>
+                                <span class="tech-tag">x86</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-group">
+                    <h3 class="group-title">Systems Programming & Computer Architecture</h3>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>CMU 15-213 labs</h4>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <p>Hands-on systems programming projects covering topics such as bit-level data manipulation,
+                                reverse engineering, memory hierarchy optimization, dynamic memory allocation, and
+                                network programming. Implemented a custom memory allocator, developed a Unix shell, and
+                                built a concurrent web proxy, gaining proficiency in C, debugging with GDB, and
+                                understanding low-level system operations. </p>
                             <div class="project-tech">
                                 <span class="tech-tag">C</span>
                                 <span class="tech-tag">Assembly</span>
@@ -215,12 +231,16 @@
 
                         <div class="project-card">
                             <div class="project-header">
-                                <h4>File System Implementation</h4>
+                                <h4>CS61C: RISC-V CPU</h4>
                                 <div class="project-links">
                                     <a href="#" class="project-link"><i class="fab fa-github"></i></a>
                                 </div>
                             </div>
-                            <p>A Unix-like file system implementation supporting basic file operations and journaling.
+                            <p>Designed and implemented a fully functional RISC-V CPU using Logisim Evolution. The project
+                                involved building datapath components (ALU, register file, control logic, etc.),
+                                integrating instruction decoding and execution for multiple RISC-V instruction types (R,
+                                I, B, S, J), and handling control flow and memory access. Developed a simple
+                                pipelined architecture and validated correctness through extensive testbenches.
                             </p>
                             <div class="project-tech">
                                 <span class="tech-tag">C</span>
@@ -245,11 +265,11 @@
                         </div>
                         <div class="contact-item">
                             <i class="fab fa-github"></i>
-                            <a href="https://github.com/yourusername">GitHub</a>
+                            <a href="https://github.com/alterego655">GitHub</a>
                         </div>
                         <div class="contact-item">
                             <i class="fab fa-linkedin"></i>
-                            <a href="https://linkedin.com/in/yourusername">LinkedIn</a>
+                            <a href="https://www.linkedin.com/in/xuneng-zhou-b24618237/">LinkedIn</a>
                         </div>
                     </div>
                 </div>
