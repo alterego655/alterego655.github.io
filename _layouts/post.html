@@ -3,67 +3,78 @@ layout: default
 ---
 
 <style>
+    .post-page {
+        padding: 6rem 0 4rem;
+        background-color: var(--light-bg);
+    }
     .blog-content {
-        max-width: 800px;
+        max-width: 900px;
         margin: 0 auto;
-        padding: 2rem;
+        padding: 3rem;
         background-color: var(--bg-color);
         border-radius: 1rem;
         box-shadow: var(--card-shadow);
         line-height: 1.8;
     }
     .blog-header {
-        text-align: center;
         margin-bottom: 3rem;
         padding-bottom: 2rem;
         border-bottom: 2px solid var(--border-color);
     }
     .blog-title {
         font-size: 2.5rem;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
         color: var(--text-color);
+        line-height: 1.2;
     }
     .blog-meta {
         color: var(--light-text);
         font-size: 1rem;
     }
-    .blog-content h2 {
+    .blog-content .post-content h2 {
         font-size: 1.8rem;
         margin: 2.5rem 0 1rem 0;
         color: var(--primary-color);
         border-bottom: 2px solid var(--primary-color);
         padding-bottom: 0.5rem;
     }
-    .blog-content h3 {
+    .blog-content .post-content h3 {
         font-size: 1.4rem;
         margin: 2rem 0 1rem 0;
         color: var(--text-color);
     }
-    .blog-content p {
+    .blog-content .post-content p {
         margin-bottom: 1.5rem;
         text-align: justify;
     }
-    .blog-content ul {
+    .blog-content .post-content ul {
         margin-bottom: 1.5rem;
         padding-left: 2rem;
     }
-    .blog-content li {
-        margin-bottom: 0.5rem;
+    .blog-content .post-content li {
+        margin-bottom: 0.8rem;
         list-style-type: disc;
     }
-    .blog-content code {
+    .blog-content .post-content code {
         background-color: var(--light-bg);
-        padding: 0.2rem 0.4rem;
+        padding: 0.2rem 0.5rem;
         border-radius: 0.3rem;
         font-family: 'Courier New', monospace;
         font-size: 0.9rem;
+        color: #d63384;
     }
-    .blog-content pre {
+    .blog-content .post-content pre {
         background-color: var(--light-bg);
-        padding: 1rem;
+        padding: 1.5rem;
         border-radius: 0.5rem;
         overflow-x: auto;
         margin: 1.5rem 0;
+        border-left: 4px solid var(--primary-color);
+    }
+    .blog-content .post-content pre code {
+        background: none;
+        padding: 0;
+        color: var(--text-color);
     }
     .back-link {
         display: inline-flex;
@@ -73,12 +84,10 @@ layout: default
         color: var(--primary-color);
         text-decoration: none;
         font-weight: 500;
+        font-size: 1rem;
     }
     .back-link:hover {
         color: var(--primary-hover);
-    }
-    body {
-        padding-top: 80px;
     }
     .tags {
         display: flex;
@@ -95,31 +104,38 @@ layout: default
         color: var(--text-color);
         transition: var(--transition);
     }
+    .tag:hover {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
 </style>
 
-<div class="container">
-    <a href="{{ '/blog/' | relative_url }}" class="back-link">
-        <i class="fas fa-arrow-left"></i>
-        Back to Blog
-    </a>
-    
-    <article class="blog-content">
-        <header class="blog-header">
-            <h1 class="blog-title">{{ page.title }}</h1>
-            <div class="blog-meta">
-                <span>{{ page.date | date: "%B %d, %Y" }}</span>
-                {% if page.tags and page.tags.size > 0 %}
-                <div class="tags">
-                    {% for tag in page.tags %}
-                    <span class="tag">{{ tag }}</span>
-                    {% endfor %}
+<section class="post-page">
+    <div class="container">
+        <a href="{{ '/blog/' | relative_url }}" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            Back to Blog
+        </a>
+        
+        <article class="blog-content">
+            <header class="blog-header">
+                <h1 class="blog-title">{{ page.title }}</h1>
+                <div class="blog-meta">
+                    <span>{{ page.date | date: "%B %d, %Y" }}</span>
+                    {% if page.tags and page.tags.size > 0 %}
+                    <div class="tags">
+                        {% for tag in page.tags %}
+                        <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                 </div>
-                {% endif %}
-            </div>
-        </header>
+            </header>
 
-        <div class="post-content">
-            {{ content }}
-        </div>
-    </article>
-</div>
+            <div class="post-content">
+                {{ content }}
+            </div>
+        </article>
+    </div>
+</section>
