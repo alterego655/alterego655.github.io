@@ -54,53 +54,23 @@ layout: default
                 </div>
 
                 <div class="blog-posts" id="latest-posts">
+                    {% for post in site.posts limit:5 %}
                     <article class="blog-card">
                         <div class="blog-meta">
-                            <span class="blog-date">May 17, 2025</span>
+                            <span class="blog-date">{{ post.date | date: "%B %d, %Y" }}</span>
+                            {% if post.tags and post.tags.size > 0 %}
                             <div class="blog-tags">
-                                <span class="tag">Operating Systems</span>
-                                <span class="tag">concurrency</span>
-                                <span class="tag">Open source course</span>
-                                <span class="tag">Vibe coding</span>
+                                {% for tag in post.tags %}
+                                <span class="tag">{{ tag }}</span>
+                                {% endfor %}
                             </div>
+                            {% endif %}
                         </div>
-                        <h3 class="blog-title">Pintos-Lab1: Threads </h3>
-                        <p class="blog-excerpt">An article about the implementation of threads in Pintos, a simple
-                            operating system.</p>
-                        <a href="blogs/pintos-lab1/pintos-lab1.md" class="read-more">Read More →</a>
+                        <h3 class="blog-title">{{ post.title }}</h3>
+                        <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+                        <a href="{{ post.url | relative_url }}" class="read-more">Read More →</a>
                     </article>
-
-                    <article class="blog-card">
-                        <div class="blog-meta">
-                            <span class="blog-date">June 17, 2025</span>
-                            <div class="blog-tags">
-                                <span class="tag">Operating Systems</span>
-                                <span class="tag">concurrency</span>
-                                <span class="tag">Open source course</span>
-                                <span class="tag">Vibe coding</span>
-                            </div>
-                        </div>
-                        <h3 class="blog-title">Pintos-Lab2: User Programs</h3>
-                        <p class="blog-excerpt">An article about the implementation of user programs in Pintos, a simple
-                            operating system.</p>
-                        <a href="blogs/pintos-lab2/pintos-lab2.md" class="read-more">Read More →</a>
-                    </article>
-
-                    <article class="blog-card">
-                        <div class="blog-meta">
-                            <span class="blog-date">May 20, 2025</span>
-                            <div class="blog-tags">
-                                <span class="tag">Database Systems</span>
-                                <span class="tag">Open source course</span>
-                                <span class="tag">Transaction</span>
-                            </div>
-                        </div>
-                        <h3 class="blog-title">An optimistic multi-version concurrency control (MVCC) implementation in
-                            bustub</h3>
-                        <p class="blog-excerpt">An Hyper & Duckdb-like MVCC implementation in bustub, CMU 15-445 course
-                            project4.</p>
-                        <a href="#" class="read-more">Read More →</a>
-                    </article>
+                    {% endfor %}
                 </div>
 
                 <div class="blog-posts hidden" id="archive-posts">
