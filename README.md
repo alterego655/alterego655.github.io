@@ -1,6 +1,6 @@
 # Xuneng Zhou's Personal Website
 
-Personal website and blog focusing on data system.
+Personal website and blog focusing on data systems.
 
 ## About
 
