@@ -5,13 +5,16 @@ permalink: /blog/
 ---
 
 <style>
-    body {
-        padding-top: 80px;
+    .blog-page {
+        padding-top: 120px;
+        padding-bottom: 4rem;
+        background-color: var(--light-bg);
+        min-height: 100vh;
     }
     .blog-filters {
         display: flex;
         gap: 1rem;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
     }
     .filter-btn {
         background: none;
@@ -48,6 +51,8 @@ permalink: /blog/
         justify-content: space-between;
         align-items: center;
         margin-bottom: 1rem;
+        flex-wrap: wrap;
+        gap: 1rem;
     }
     .blog-date {
         color: var(--light-text);
@@ -99,9 +104,54 @@ permalink: /blog/
     .read-more:hover::after {
         width: 100%;
     }
+    
+    /* Archive styles */
+    .archive-year {
+        margin-bottom: 3rem;
+        background-color: var(--bg-color);
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: var(--card-shadow);
+    }
+    .archive-year h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+    }
+    .archive-list {
+        list-style: none;
+        padding: 0;
+    }
+    .archive-list li {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .archive-list li:last-child {
+        border-bottom: none;
+    }
+    .archive-date {
+        color: var(--light-text);
+        font-size: 0.9rem;
+        min-width: 70px;
+        font-weight: 500;
+    }
+    .archive-list a {
+        color: var(--text-color);
+        text-decoration: none;
+        transition: var(--transition);
+        font-weight: 500;
+    }
+    .archive-list a:hover {
+        color: var(--primary-color);
+    }
 </style>
 
-<section class="section">
+<section class="blog-page">
     <div class="container">
         <h1 class="section-title">Blog Posts</h1>
 
@@ -111,7 +161,7 @@ permalink: /blog/
         </div>
 
         <div class="blog-posts" id="latest-posts">
-            {% for post in site.posts %}
+            {% for post in site.posts limit:5 %}
             <article class="blog-card">
                 <div class="blog-meta">
                     <span class="blog-date">{{ post.date | date: "%B %d, %Y" }}</span>

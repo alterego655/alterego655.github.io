@@ -1,0 +1,175 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+
+<style>
+    .projects-page {
+        padding-top: 120px;
+        padding-bottom: 4rem;
+        background-color: var(--light-bg);
+        min-height: 100vh;
+    }
+    .project-group {
+        margin-bottom: 3rem;
+    }
+    .group-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-color);
+    }
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+    .project-card {
+        background-color: var(--bg-color);
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+    .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    .project-header h4 {
+        font-size: 1.3rem;
+        color: var(--text-color);
+    }
+    .project-links {
+        display: flex;
+        gap: 1rem;
+    }
+    .project-link {
+        font-size: 1.2rem;
+        color: var(--light-text);
+        transition: var(--transition);
+    }
+    .project-link:hover {
+        color: var(--primary-color);
+    }
+    .project-card p {
+        color: var(--light-text);
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+        line-height: 1.6;
+    }
+    .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .tech-tag {
+        background-color: var(--light-bg);
+        padding: 0.3rem 0.8rem;
+        border-radius: 2rem;
+        font-size: 0.8rem;
+        color: var(--text-color);
+    }
+</style>
+
+<section class="projects-page">
+    <div class="container">
+        <h1 class="section-title">Projects</h1>
+
+        <div class="project-group">
+            <h3 class="group-title">Database Systems</h3>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h4>bustub</h4>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <p>A series of hands-on database system projects that build a fully functional RDBMS from
+                        scratch. Implemented key components including a buffer pool manager, B+ tree index,
+                        query execution engine, and concurrency control — all in modern C++.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">SQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-group">
+            <h3 class="group-title">Operating Systems</h3>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h4>pintos</h4>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <p>A teaching operating system framework for the x86 architecture, designed to deepen
+                        understanding of OS internals through hands-on development. Over a series of labs, I
+                        implemented kernel thread scheduling with priority donation, user program loading with
+                        system calls, demand paging for virtual memory, and memory-mapped file support. Each
+                        component was built in C and tested on x86 emulators like QEMU.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">x86</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-group">
+            <h3 class="group-title">Systems Programming & Computer Architecture</h3>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h4>CMU 15-213 labs</h4>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <p>Hands-on systems programming projects covering topics such as bit-level data manipulation,
+                        reverse engineering, memory hierarchy optimization, dynamic memory allocation, and
+                        network programming. Implemented a custom memory allocator, developed a Unix shell, and
+                        built a concurrent web proxy, gaining proficiency in C, debugging with GDB, and
+                        understanding low-level system operations. </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">Assembly</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h4>CS61C: RISC-V CPU</h4>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <p>Designed and implemented a fully functional RISC-V CPU using Logisim Evolution. The project
+                        involved building datapath components (ALU, register file, control logic, etc.),
+                        integrating instruction decoding and execution for multiple RISC-V instruction types (R,
+                        I, B, S, J), and handling control flow and memory access. Developed a simple
+                        pipelined architecture and validated correctness through extensive testbenches.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
