@@ -4,26 +4,30 @@ layout: default
 
 <style>
     .post-page {
-        padding-top: 120px;
-        padding-bottom: 4rem;
-        background-color: var(--light-bg);
+        background-color: var(--bg-color);
         min-height: 100vh;
+    }
+    .post-header-section {
+        background-color: var(--bg-color);
+        padding-top: 100px;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border-color);
     }
     .blog-content {
         max-width: 900px;
         margin: 0 auto;
-        padding: 3rem;
+        padding: 3rem 2rem;
         background-color: var(--bg-color);
-        border-radius: 1rem;
-        box-shadow: var(--card-shadow);
         line-height: 1.8;
     }
     .blog-header {
-        margin-bottom: 2.5rem;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 2rem;
     }
     .blog-title {
         font-size: 2.5rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         color: var(--text-color);
         line-height: 1.3;
         font-weight: 700;
@@ -31,6 +35,9 @@ layout: default
     .blog-meta {
         color: var(--light-text);
         font-size: 1rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
     }
     .blog-content .post-content h2 {
         font-size: 1.8rem;
@@ -81,11 +88,11 @@ layout: default
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
         color: var(--primary-color);
         text-decoration: none;
         font-weight: 500;
-        font-size: 1rem;
+        font-size: 0.95rem;
         transition: var(--transition);
     }
     .back-link:hover {
@@ -93,13 +100,12 @@ layout: default
         transform: translateX(-3px);
     }
     .back-link i {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
     .tags {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
-        margin-top: 1rem;
     }
     .tag {
         background-color: var(--light-bg);
@@ -115,33 +121,36 @@ layout: default
         color: white;
         border-color: var(--primary-color);
     }
+    .post-content {
+        margin-top: 2rem;
+    }
 </style>
 
-<section class="post-page">
-    <div class="container">
-        <a href="{{ '/blog/' | relative_url }}" class="back-link">
-            <i class="fas fa-arrow-left"></i>
-            Back to Blog
-        </a>
-        
-        <article class="blog-content">
-            <header class="blog-header">
-                <h1 class="blog-title">{{ page.title }}</h1>
-                <div class="blog-meta">
-                    <span>{{ page.date | date: "%B %d, %Y" }}</span>
-                    {% if page.tags and page.tags.size > 0 %}
-                    <div class="tags">
-                        {% for tag in page.tags %}
-                        <span class="tag">{{ tag }}</span>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
+<div class="post-page">
+    <header class="post-header-section">
+        <div class="blog-header">
+            <a href="{{ '/blog/' | relative_url }}" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Blog
+            </a>
+            
+            <h1 class="blog-title">{{ page.title }}</h1>
+            <div class="blog-meta">
+                <span>{{ page.date | date: "%B %d, %Y" }}</span>
+                {% if page.tags and page.tags.size > 0 %}
+                <div class="tags">
+                    {% for tag in page.tags %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
                 </div>
-            </header>
-
-            <div class="post-content">
-                {{ content }}
+                {% endif %}
             </div>
-        </article>
-    </div>
-</section>
+        </div>
+    </header>
+
+    <article class="blog-content">
+        <div class="post-content">
+            {{ content }}
+        </div>
+    </article>
+</div>
