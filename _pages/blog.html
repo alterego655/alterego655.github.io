@@ -6,34 +6,22 @@ permalink: /blog/
 
 <style>
     .blog-page {
-        padding-top: 120px;
+        padding-top: 140px;
         padding-bottom: 4rem;
         background-color: var(--light-bg);
         min-height: 100vh;
     }
-    .blog-filters {
-        display: flex;
-        gap: 1rem;
+    .blog-intro {
+        max-width: 720px;
         margin-bottom: 3rem;
-    }
-    .filter-btn {
-        background: none;
-        border: 1px solid var(--border-color);
-        padding: 0.5rem 1.5rem;
-        border-radius: 2rem;
-        cursor: pointer;
-        transition: var(--transition);
-        font-weight: 500;
-    }
-    .filter-btn.active,
-    .filter-btn:hover {
-        background-color: var(--primary-color);
-        color: white;
-        border-color: var(--primary-color);
+        color: var(--light-text);
     }
     .blog-posts {
         display: grid;
         gap: 2rem;
+    }
+    .blog-posts.cards {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
     .blog-card {
         background-color: var(--bg-color);
@@ -41,130 +29,95 @@ permalink: /blog/
         padding: 2rem;
         box-shadow: var(--card-shadow);
         transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
     .blog-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
     }
     .blog-meta {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1rem;
         flex-wrap: wrap;
-        gap: 1rem;
-    }
-    .blog-date {
-        color: var(--light-text);
+        gap: 0.75rem;
         font-size: 0.9rem;
-    }
-    .blog-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-    .blog-tags .tag {
-        font-size: 0.8rem;
-        padding: 0.3rem 0.8rem;
-        background-color: var(--light-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 2rem;
-        color: var(--text-color);
-        transition: var(--transition);
+        color: var(--light-text);
     }
     .blog-title {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+        font-size: 1.4rem;
         color: var(--text-color);
+        margin: 0;
+    }
+    .blog-title a {
+        color: inherit;
+        text-decoration: none;
         transition: var(--transition);
     }
-    .blog-card:hover .blog-title {
+    .blog-card:hover .blog-title a {
         color: var(--primary-color);
     }
     .blog-excerpt {
         color: var(--light-text);
-        margin-bottom: 1.5rem;
+        margin: 0;
+        flex-grow: 1;
     }
     .read-more {
         font-weight: 500;
-        position: relative;
         color: var(--primary-color);
         text-decoration: none;
+        align-self: flex-start;
     }
-    .read-more::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -2px;
-        left: 0;
-        background-color: var(--primary-color);
-        transition: var(--transition);
+    .archive-section {
+        margin-top: 4rem;
     }
-    .read-more:hover::after {
-        width: 100%;
-    }
-    
-    /* Archive styles */
     .archive-year {
-        margin-bottom: 3rem;
-        background-color: var(--bg-color);
-        padding: 2rem;
-        border-radius: 1rem;
-        box-shadow: var(--card-shadow);
+        margin-bottom: 2.5rem;
     }
     .archive-year h3 {
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
         color: var(--primary-color);
-        border-bottom: 2px solid var(--primary-color);
-        padding-bottom: 0.5rem;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
     }
     .archive-list {
         list-style: none;
         padding: 0;
+        display: grid;
+        gap: 0.5rem;
     }
-    .archive-list li {
-        padding: 0.75rem 0;
-        border-bottom: 1px solid var(--border-color);
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-    .archive-list li:last-child {
-        border-bottom: none;
-    }
-    .archive-date {
-        color: var(--light-text);
-        font-size: 0.9rem;
-        min-width: 70px;
-        font-weight: 500;
-    }
-    .archive-list a {
+    .archive-list li a {
         color: var(--text-color);
         text-decoration: none;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        padding: 0.25rem 0;
+        border-bottom: 1px dashed transparent;
         transition: var(--transition);
-        font-weight: 500;
     }
-    .archive-list a:hover {
+    .archive-list li a span {
+        font-size: 0.85rem;
+        color: var(--light-text);
+    }
+    .archive-list li a:hover {
         color: var(--primary-color);
+        border-bottom-color: var(--primary-color);
     }
 </style>
 
 <section class="blog-page">
     <div class="container">
-        <h1 class="section-title">Blog Posts</h1>
+        <h1 class="section-title">Writing</h1>
 
-        <div class="blog-filters">
-            <button class="filter-btn active" data-filter="latest">Latest Posts</button>
-            <button class="filter-btn" data-filter="archive">Archive</button>
-        </div>
+        <p class="blog-intro">Fresh notes on database engines, OS internals, and the systems workbench. These are the five most recent posts.</p>
 
-        <div class="blog-posts" id="latest-posts">
+        <div class="blog-posts cards">
             {% for post in site.posts limit:5 %}
             <article class="blog-card">
                 <div class="blog-meta">
-                    <span class="blog-date">{{ post.date | date: "%B %d, %Y" }}</span>
+                    <span>{{ post.date | date: "%B %d, %Y" }}</span>
                     {% if post.tags and post.tags.size > 0 %}
                     <div class="blog-tags">
                         {% for tag in post.tags %}
@@ -173,43 +126,32 @@ permalink: /blog/
                     </div>
                     {% endif %}
                 </div>
-                <h3 class="blog-title">{{ post.title }}</h3>
+                <h3 class="blog-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
                 <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
                 <a href="{{ post.url | relative_url }}" class="read-more">Read More →</a>
             </article>
             {% endfor %}
         </div>
 
-        <div class="blog-posts hidden" id="archive-posts">
+        <div class="archive-section">
+            <h2 class="section-subtitle">Archive</h2>
+
+            {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+            {% for year in posts_by_year %}
             <div class="archive-year">
-                <h3>2025</h3>
+                <h3>{{ year.name }}</h3>
                 <ul class="archive-list">
-                    {% for post in site.posts %}
-                    {% assign post_year = post.date | date: "%Y" %}
-                    {% if post_year == "2025" %}
-                    <li><span class="archive-date">{{ post.date | date: "%b %d" }}</span> <a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-                    {% endif %}
+                    {% for post in year.items %}
+                    <li>
+                        <a href="{{ post.url | relative_url }}">
+                            <span>{{ post.date | date: "%b %d" }}</span>
+                            {{ post.title }}
+                        </a>
+                    </li>
                     {% endfor %}
                 </ul>
             </div>
-
-            <div class="archive-year">
-                <h3>2024</h3>
-                <ul class="archive-list">
-                    <li><span class="archive-date">Mar 15</span> <a href="#">Copy-on-Write Trie: Implementation and Performance Analysis</a></li>
-                    <li><span class="archive-date">Feb 20</span> <a href="#">Designing Fault-Tolerant Distributed Database Systems</a></li>
-                    <li><span class="archive-date">Jan 10</span> <a href="#">I/O Schedulers: A Deep Dive</a></li>
-                </ul>
-            </div>
-
-            <div class="archive-year">
-                <h3>2023</h3>
-                <ul class="archive-list">
-                    <li><span class="archive-date">Dec 05</span> <a href="#">Memory Management in Modern Databases</a></li>
-                    <li><span class="archive-date">Nov 12</span> <a href="#">Query Optimization Techniques</a></li>
-                    <li><span class="archive-date">Oct 03</span> <a href="#">Concurrency Control Mechanisms</a></li>
-                </ul>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

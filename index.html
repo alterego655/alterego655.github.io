@@ -46,14 +46,9 @@ layout: default
         <!-- Blogs Section -->
         <section id="blogs" class="section">
             <div class="container">
-                <h2 class="section-title">Blog Posts</h2>
+                <h2 class="section-title">Latest Writing</h2>
 
-                <div class="blog-filters">
-                    <button class="filter-btn active" data-filter="latest">Latest Posts</button>
-                    <button class="filter-btn" data-filter="archive">Archive</button>
-                </div>
-
-                <div class="blog-posts" id="latest-posts">
+                <div class="blog-posts cards">
                     {% for post in site.posts limit:5 %}
                     <article class="blog-card">
                         <div class="blog-meta">
@@ -66,37 +61,17 @@ layout: default
                             </div>
                             {% endif %}
                         </div>
-                        <h3 class="blog-title">{{ post.title }}</h3>
+                        <h3 class="blog-title">
+                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                        </h3>
                         <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
                         <a href="{{ post.url | relative_url }}" class="read-more">Read More →</a>
                     </article>
                     {% endfor %}
                 </div>
 
-                <div class="blog-posts hidden" id="archive-posts">
-                    <div class="archive-year">
-                        <h3>2024</h3>
-                        <ul class="archive-list">
-                            <li><span class="archive-date">Mar 15</span> <a href="#">Copy-on-Write Trie: Implementation
-                                    and Performance Analysis</a></li>
-                            <li><span class="archive-date">Feb 20</span> <a href="#">Designing Fault-Tolerant
-                                    Distributed Database Systems</a></li>
-                            <li><span class="archive-date">Jan 10</span> <a href="#">I/O Schedulers: A Deep Dive</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="archive-year">
-                        <h3>2023</h3>
-                        <ul class="archive-list">
-                            <li><span class="archive-date">Dec 05</span> <a href="#">Memory Management in Modern
-                                    Databases</a></li>
-                            <li><span class="archive-date">Nov 12</span> <a href="#">Query Optimization Techniques</a>
-                            </li>
-                            <li><span class="archive-date">Oct 03</span> <a href="#">Concurrency Control Mechanisms</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="archive-links">
+                    <a href="/blog/" class="archive-link">Browse full archive →</a>
                 </div>
             </div>
         </section>
