@@ -1,0 +1,79 @@
+# Site settings
+title: "Xuneng Zhou | Data Systems Engineer"
+description: "Exploring the intersections of DBMS implementations, Operating Systems, and Computer Architecture"
+baseurl: ""
+url: "https://alterego655.github.io"
+author: "Xuneng Zhou"
+email: "xunengzhou@gmail.com"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:year/:month/:day/:title/
+
+# Jekyll configuration
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Markdown settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+
+# Include files
+include:
+  - _pages
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Xuneng Zhou"
+  - scope:
+      path: "_pages"
+      type: "pages"
+    values:
+      layout: "page"
+
+# Social links
+github_username: alterego655
+linkedin_username: xuneng-zhou-b24618237
+
+# Site navigation
+navigation:
+  - title: About
+    url: /#about
+  - title: Blog
+    url: /blog/
+  - title: Projects
+    url: /#projects
+  - title: Contact
+    url: /#contact

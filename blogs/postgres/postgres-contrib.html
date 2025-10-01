@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hitchhiker's Guide to PostgreSQL Hacking - Xuneng Zhou</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            line-height: 1.8;
+        }
+        .blog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .blog-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        .blog-meta {
+            color: var(--light-text);
+            font-size: 1rem;
+        }
+        .blog-content h2 {
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1rem 0;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+        .blog-content h3 {
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem 0;
+            color: var(--text-color);
+        }
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        .blog-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+        .blog-content li {
+            margin-bottom: 0.5rem;
+            list-style-type: disc;
+        }
+        .blog-content code {
+            background-color: var(--light-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.3rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        .blog-content pre {
+            background-color: var(--light-bg);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: var(--primary-hover);
+        }
+        body {
+            padding-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../../index.html" class="logo">XZ</a>
+                <ul class="nav-menu">
+                    <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                    <li><a href="../../index.html#blogs" class="nav-link">Blogs</a></li>
+                    <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                    <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <a href="../../index.html#blogs" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Blog
+            </a>
+            
+            <article class="blog-content">
+                <header class="blog-header">
+                    <h1 class="blog-title">The Hitchhiker's Guide to PostgreSQL Hacking</h1>
+                    <div class="blog-meta">
+                        <span>October 1, 2025</span> • 
+                        <span>Database Systems, PostgreSQL, Open Source, Development</span>
+                    </div>
+                </header>
+
+                <h2>Setting Up Your Development Environment</h2>
+                
+                <p>Before you begin, ensure you have the necessary tools and libraries installed. PostgreSQL is written in C and can be developed on most Unix-like systems (Linux, *BSD, macOS) as well as on Windows. Most contributors use a Unix-like OS with the typical open-source development toolchain: a C compiler (e.g. GCC or Clang), GNU Make, GDB for debugging, Autoconf/Automake, etc. On Windows, you can compile using MinGW or Microsoft Visual Studio (the project supports building with the MSVC toolchain). You will also need Git for version control, since PostgreSQL's source code is managed in a Git repository. Additionally, certain build dependencies are required: Flex (lexical analyzer generator) and Bison (parser generator) are needed to build the query parser, and Perl (version 5.14 or higher) is used in the build process and test suite. Other common libraries like Readline (for psql command-line editing) and zlib (for compression support) should be installed as well unless you configure the build to omit them. The official documentation's installation requirements section provides a complete list of prerequisites for building PostgreSQL on various platforms. In summary, get a working C development environment with the above tools and libraries, and you'll be ready to start.</p>
+
+                <h2>Cloning the PostgreSQL Source Code and Compiling It</h2>
+                
+                <p>With your environment set up, the next step is to obtain PostgreSQL's source code. While you can download released source tarballs, it's recommended to work from the Git repository so that you have the latest development code and full project history. The PostgreSQL Git repository is publicly accessible – for example, you can clone it with the command: <code>git clone https://git.postgresql.org/git/postgresql.git</code>. This will create a local copy of the entire source history (it may take some time on first download). Regular contributors will periodically update their local copy (e.g. via git fetch) to stay in sync with the project's master branch.</p>
+
+                <p>Once you have the code, building PostgreSQL from source is straightforward. PostgreSQL uses the GNU Autoconf build system (with support for Meson as an experimental alternative). In the simplest case, navigate into the source directory and run the configure script, then make to compile. For example:</p>
+
+                <pre><code>./configure        # auto-detect platform and set up Makefiles
+make               # compile the code</code></pre>
+
+                <p>This will compile the PostgreSQL server and all client applications and libraries. For a standard development build, you typically don't need special options to configure; however, many contributors add the <code>--enable-depend</code> flag when running configure, which tells make to track header-file dependencies (so changes in header files trigger recompilation of affected source files). Compilation can take a few minutes, and will produce the postgres server binary and other tool binaries in the specified build directory or default locations. After a successful compile, it's important to run the test suite to verify that everything works on your system. You can run the core regression tests with <code>make check</code>, which initializes a temporary test database and runs numerous tests to ensure the build behaves as expected. Running <code>make check</code> (or the more extensive <code>make check-world</code> for additional modules) is a good habit after any code change, to catch issues early. If the tests pass, you've confirmed your build is working, and you can also proceed with installing PostgreSQL locally (via <code>make install</code>) if you need to run the new binaries in a real environment. For development purposes, often running the binaries directly from the build directory or using <code>make check</code> is sufficient, but installation can be done in a separate prefix if needed.</p>
+
+                <p><strong>Supported Platforms:</strong> PostgreSQL's build process is primarily designed for Unix-like systems. These include Linux, many flavors of BSD, and others – generally if it's POSIX-compliant, PostgreSQL can likely compile on it. There is also support for Windows: the source tree includes project files and build scripts for Microsoft Visual C++ (supported versions have evolved; modern PostgreSQL supports recent MSVC versions). On Windows, you can either use the Visual Studio build or use MinGW/Microsoft's build tools to compile from source. The community provides documentation for Windows builds in the official manuals. Ensure you have the platform-specific prerequisites (for example, on Windows you might need Perl and a Windows SDK installed, etc.) as detailed in the documentation. In all cases, refer to the "Installation from Source" chapter of the PostgreSQL documentation for any platform-specific notes and detailed instructions on the build process.</p>
+
+                <h2>Understanding the Codebase Structure and Key Components</h2>
+                
+                <p>PostgreSQL is a large project, but its source code is organized in a consistent directory structure. Familiarizing yourself with this structure will help you navigate the codebase. Most of the relevant code lives under the <code>src/</code> directory of the repository. Key subdirectories include:</p>
+
+                <ul>
+                    <li><strong>src/backend/:</strong> This contains the database server (backend) code. It's further divided into modules corresponding to subsystems of the server. For instance, <code>src/backend/parser/</code> holds the SQL parser, <code>optimizer/</code> has the query planner/optimizer, <code>executor/</code> contains the query execution engine, <code>commands/</code> implements DDL/DML command handling, <code>storage/</code> deals with how data is stored on disk and in memory, <code>utils/</code> contains various utilities (including cache management, error reporting, etc.), and so on. Each subdirectory often has a README file explaining its role – for example, <code>src/backend/access/</code> has README files for the table access methods. Reading these can give you insight into how each component functions.</li>
+                    
+                    <li><strong>src/include/:</strong> This holds header files for the server. The directory mirrors the structure of <code>src/backend</code> (so, for example, <code>src/include/executor/</code> corresponds to executor definitions). If you're making changes to a backend module, you'll likely be editing both a .c file in <code>src/backend/...</code> and its corresponding .h in <code>src/include/...</code>. Global definitions (like fundamental data structures, error codes, configuration constants) are also in <code>src/include/</code>. Keeping header files in sync with implementation is important; remember to run make with the <code>--enable-depend</code> configured so that header changes trigger rebuilds.</li>
+                    
+                    <li><strong>src/bin/:</strong> This directory contains source for command-line utilities and client applications. For example, the psql client is in <code>src/bin/psql/</code>, and other tools like pg_dump (backup utility), pg_ctl (server control script), and initdb (database cluster initialization) each have their own subfolders here. If your contribution affects user-facing tools or client-side logic, this is where those changes will go.</li>
+                    
+                    <li><strong>src/interfaces/:</strong> This contains client library code, such as libpq (the C library for connecting to PostgreSQL). If you are working on how external programs communicate with PostgreSQL, or on procedural language handlers, you might be dealing with code under <code>src/interfaces/</code>.</li>
+                    
+                    <li><strong>contrib/:</strong> This is a collection of optional modules that are packaged with PostgreSQL. These are additional features (extensions, utilities) maintained by the community. Examples include hstore (a key-value data type), pg_stat_statements (query tracking stats), and many others. If you write a new optional extension or tool, it might live in contrib/. Studying contrib modules can also serve as simpler examples of how certain features are implemented outside the core backend.</li>
+                    
+                    <li><strong>src/test/:</strong> This holds test suites. <code>src/test/regress/</code> contains the core regression tests (which are mostly a series of SQL files and expected outputs). There are also subdirectories for more specific or advanced test suites, such as <code>src/test/isolation/</code> for testing concurrent behavior, and various TAP tests (written in Perl) under <code>src/test/perl/</code> or other <code>src/test/*</code> directories (for example, <code>src/test/recovery/</code> for replication and recovery tests). We will discuss testing in more detail later, but it's useful to know where tests reside.</li>
+                </ul>
+
+                <p>Apart from these, there are build system files (e.g. the GNUmakefiles in each directory), documentation source (under <code>doc/src/</code>), and other supporting files. Overall, the structure is logical: it separates the server's functional areas and the various utilities. The official PostgreSQL developer documentation provides an "Overview of PostgreSQL Internals" which walks through how a query flows through the system (from parser to planner to executor to storage). This can be very helpful for identifying which part of the code you might need to work with. Additionally, the PostgreSQL website offers a backend flowchart that visually outlines the backend architecture; it shows modules like Parser, Rewriter, Planner/Optimizer, Executor, etc., and you can click on components to see more details or jump to code and documentation. Exploring these resources will give you a high-level understanding of PostgreSQL's key components and how they interact (for example, how the parser outputs a parse tree which the optimizer then turns into a query plan for the executor).</p>
+
+                <p>In short, take some time to read the README files in various directories and the relevant chapters in the developer documentation. For instance, if you intend to modify the query planner, read the README in <code>src/backend/optimizer</code> and the "Planner/Optimizer" section of the internals documentation. If you plan to touch indexes, look at <code>src/backend/access</code> and its subdirectories (each index AM has its own code). This upfront investment in understanding the codebase structure and conventions will pay off when you start making changes.</p>
+
+                <h2>Reviewing Official Documentation and Developer Resources</h2>
+                
+                <p>PostgreSQL has a wealth of documentation for both users and developers. As an aspiring contributor, you should familiarize yourself with the official developer documentation and community-maintained resources:</p>
+
+                <ul>
+                    <li><strong>Core Project Documentation (Developer Sections):</strong> The PostgreSQL manual itself contains sections aimed at developers. In the official docs (available on the website for each version), look for the "Internals" part of the documentation. This includes chapters like Overview of PostgreSQL Internals, System Catalogs, Frontend/Backend Protocol, Writing Instrumentation, and importantly the PostgreSQL Coding Conventions appendix. The Coding Conventions (often just called the "coding" guidelines) detail the required coding style, formatting, and best practices for PostgreSQL code. Reading these will help you write patches that adhere to the project's standards. There's also documentation on how to use Git with the PostgreSQL project (in Appendix I of the manual) and how the source code repository is organized. Be sure to consult the "Developer FAQ" on the PostgreSQL wiki as well (more on that below), as it often points to relevant sections of the official docs for specific topics.</li>
+                    
+                    <li><strong>PostgreSQL Wiki – Developer FAQ and Guides:</strong> The PostgreSQL community maintains a wiki with a lot of useful information for developers. A great starting point is the Developer FAQ. This FAQ answers common questions about the development process, such as how to get the source, what tools are needed, how the code is structured, how to submit patches, etc. It's effectively a distilled knowledge base from long-time contributors. Another excellent wiki page is "So, you want to be a developer?" – a guide specifically written for new contributors that provides an overview of how to get started, explains the development workflow, and gives tips on navigating the community culture. The wiki also has pages for Submitting a Patch, Reviewing a Patch, a TODO list of potential features, and more.</li>
+                </ul>
+
+                <h2>Participating in the PostgreSQL Developer Community</h2>
+                
+                <p>PostgreSQL's development is a community-driven process, and participating in the community is both essential and highly educational. The primary avenues for interaction are the mailing lists, periodic CommitFests, and real-time chat (IRC/Discord). Here's how to get involved in each:</p>
+
+                <ul>
+                    <li><strong>Mailing Lists (pgsql-hackers and others):</strong> The heart of PostgreSQL development discussion is the pgsql-hackers mailing list. This is where patches are submitted and discussed, design proposals are debated, and general development issues are aired. If you're serious about contributing, you should subscribe to pgsql-hackers and follow the conversations. Even as a lurker at first, you'll gain insight into the current priorities and the tone of discussion. When you're ready to contribute, you will be sending your patch or idea to this list, so it helps to observe how others do it.</li>
+                    
+                    <li><strong>CommitFests:</strong> PostgreSQL uses a unique process called CommitFests to organize the patch review and commit workflow. A CommitFest is a focused period (generally one month long) during which the community concentrates on reviewing patches that have been submitted, with the goal of committing those that are ready. There are typically several CommitFests during a development cycle (the PostgreSQL developers note around five CFs for a major release, often in July, September, November, January, and March).</li>
+                    
+                    <li><strong>Real-Time Discussions (IRC and Discord):</strong> While decisions and formal discussions happen on the mailing lists, the community also offers real-time chat which can be helpful for quick questions or networking. PostgreSQL has an official presence on IRC (Internet Relay Chat) via the Libera.Chat network. The channel #postgresql (English) is a general discussion channel where you'll find many community members. In recent years, the community has also established a Discord server specifically for PostgreSQL hacking (development).</li>
+                </ul>
+
+                <h2>Writing, Testing, and Submitting Patches</h2>
+                
+                <p>When you've decided on something to contribute – be it a bug fix, a new feature, or an improvement – the workflow typically goes like this: code the change, test it thoroughly, create a patch (diff), and send it to the community for review.</p>
+
+                <p><strong>Implementing Your Changes:</strong> Code changes should begin with a clear goal and ideally consensus (for anything non-trivial). If your contribution is a simple bug fix or minor improvement, you might dive straight into coding. For larger changes or new features, it's wise to discuss the design on pgsql-hackers first (or at least be aware of prior discussions). Assuming you have the go-ahead or a clear task, create a new Git branch for your work (this is good practice to keep your changes isolated). Implement the functionality in C (and/or SQL, etc., depending on the nature of the change). Try to follow the style guidelines from the start – it will make your life easier later.</p>
+
+                <p><strong>Preparing the Patch for Submission:</strong> Once you believe your patch is ready – it implements the intended behavior, passes all tests (including new ones you wrote), and you've run through some code cleanup – it's time to prepare it for the mailing list. The PostgreSQL project prefers patches in the form of textual diffs (unified diff format). The easiest way to generate this is using Git. If your changes are all in a branch <code>my_feature</code>, you can do: <code>git diff master my_feature > my_feature.patch</code> (assuming master is up-to-date with the latest community code).</p>
+
+                <h2>Following Coding Guidelines and Best Practices</h2>
+                
+                <p>PostgreSQL has a well-defined coding style and a set of best practices that contributors are expected to follow. This consistency is one reason the codebase remains high-quality despite many contributors. Here are the key guidelines and practices:</p>
+
+                <ul>
+                    <li><strong>Code Formatting:</strong> PostgreSQL uses a specific indentation and brace style, inherited from BSD conventions. Indent with tabs set at 4 spaces – do not convert tabs to spaces (a tab is considered 4 columns in width). Each logical indent level is one tab. Braces for control structures (if/while/for) go on a newline of their own (not after the if statement on the same line).</li>
+                    
+                    <li><strong>Naming Conventions:</strong> PostgreSQL doesn't enforce one naming style globally (you'll see CamelCase in some places and lowercase_with_underscores in others). The guideline is to match the style of the surrounding code or the subsystem you're working in. For example, in the parser and executor, many variables and functions use CamelCase (e.g., MaxHeapTupleSize or ExecQual), whereas in other areas you might see lowercase with underscores.</li>
+                    
+                    <li><strong>General C Best Practices:</strong> Always check for memory allocation errors (though in PostgreSQL code, allocations with palloc will throw an error on out-of-memory, so usually no need to check its result). Free memory in error paths appropriately (or use PG_TRY/PG_CATCH blocks if needed for resource cleanup). Use ereport/elog for error reporting rather than fprintf or custom logging.</li>
+                </ul>
+
+                <h2>Getting Reviews and Feedback on Your Contributions</h2>
+                
+                <p>After you've submitted your patch to the mailing list and added it to a CommitFest, the next phase is the review process. This is where your contribution is scrutinized by others – an essential step for quality control.</p>
+
+                <p><strong>The Patch Review Cycle:</strong> Once your patch is in the commitfest queue, one or more community members will (hopefully) pick it up for review. A reviewer might be another volunteer contributor or a PostgreSQL committer. They will read your code, test it, and provide feedback on the mailing list thread associated with your patch. The feedback could range from simple ("this compiles and the tests pass, looks good") to extensive ("here are 10 issues:…") depending on the patch's complexity and quality. Don't be discouraged by critique – very few patches are accepted without revision.</p>
+
+                <h2>Contributing to Documentation and Testing</h2>
+                
+                <p>Code is not the only way to contribute to PostgreSQL's development. Documentation and testing are crucial parts of the project, and contributions in these areas are very much welcomed by the community. In fact, the project often encourages new contributors to start with documentation improvements or test cases, as these can be a great way to familiarize yourself with the codebase and review process.</p>
+
+                <p><strong>Improving Documentation:</strong> PostgreSQL's documentation (the user manual) is extensive, but there's always room for improvement – whether it's clarifying a confusing explanation, adding an example, fixing mistakes, or documenting new features. The documentation is written in DocBook (XML) format, located in the <code>doc/src/sgml/</code> directory of the source.</p>
+
+                <p><strong>Adding Tests and Continuous Testing:</strong> PostgreSQL relies on its regression test suite to catch issues. Contributing to testing can mean writing new regression tests, testing patches (reviewing), participating in build farm and cross-platform testing, or beta testing.</p>
+
+                <h2>Conclusion</h2>
+                
+                <p>Contributing to PostgreSQL development involves more than just writing code – it's about engaging with a mature community process. By setting up the right environment, understanding the code structure, reading the documentation, communicating on mailing lists/IRC, adhering to coding standards, and being diligent with testing and documentation, you'll set yourself up for success. PostgreSQL has been around for decades, and it has a reputation for stability and performance – this is largely thanks to the careful review and contributions of its developer community. As a new contributor, you're encouraged to start small, learn continuously, and gradually take on bigger challenges. Every contribution, whether a typo fix in the docs or a major new feature, goes through the same fundamental steps outlined above. The tone and thoroughness of this process might seem daunting at first, but many find it a highly rewarding experience – you get to collaborate with very knowledgeable developers and ultimately see your work become part of a world-class database system.</p>
+
+                <p>Good luck with your journey into PostgreSQL development! The community is always looking for new contributors, and by following this guide and the linked resources, you'll be well on your way to making meaningful contributions. Remember that every PostgreSQL expert was once a beginner – persistence, openness to feedback, and a passion for the technology will serve you well. We look forward to your patches!</p>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Xuneng Zhou. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

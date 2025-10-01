@@ -1,0 +1,125 @@
+---
+layout: default
+---
+
+<style>
+    .blog-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: var(--bg-color);
+        border-radius: 1rem;
+        box-shadow: var(--card-shadow);
+        line-height: 1.8;
+    }
+    .blog-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid var(--border-color);
+    }
+    .blog-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-color);
+    }
+    .blog-meta {
+        color: var(--light-text);
+        font-size: 1rem;
+    }
+    .blog-content h2 {
+        font-size: 1.8rem;
+        margin: 2.5rem 0 1rem 0;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+    }
+    .blog-content h3 {
+        font-size: 1.4rem;
+        margin: 2rem 0 1rem 0;
+        color: var(--text-color);
+    }
+    .blog-content p {
+        margin-bottom: 1.5rem;
+        text-align: justify;
+    }
+    .blog-content ul {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+    }
+    .blog-content li {
+        margin-bottom: 0.5rem;
+        list-style-type: disc;
+    }
+    .blog-content code {
+        background-color: var(--light-bg);
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.3rem;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+    }
+    .blog-content pre {
+        background-color: var(--light-bg);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+    }
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .back-link:hover {
+        color: var(--primary-hover);
+    }
+    body {
+        padding-top: 80px;
+    }
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    .tag {
+        background-color: var(--light-bg);
+        border: 1px solid var(--border-color);
+        padding: 0.3rem 0.8rem;
+        border-radius: 2rem;
+        font-size: 0.8rem;
+        color: var(--text-color);
+        transition: var(--transition);
+    }
+</style>
+
+<div class="container">
+    <a href="{{ '/blog/' | relative_url }}" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Back to Blog
+    </a>
+    
+    <article class="blog-content">
+        <header class="blog-header">
+            <h1 class="blog-title">{{ page.title }}</h1>
+            <div class="blog-meta">
+                <span>{{ page.date | date: "%B %d, %Y" }}</span>
+                {% if page.tags and page.tags.size > 0 %}
+                <div class="tags">
+                    {% for tag in page.tags %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </header>
+
+        <div class="post-content">
+            {{ content }}
+        </div>
+    </article>
+</div>

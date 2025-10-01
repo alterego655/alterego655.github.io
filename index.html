@@ -1,34 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xuneng Zhou | Data Systems Engineer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">XZ</a>
-                <div class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#blogs" class="nav-link">Blogs</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
+---
+layout: default
+---
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
             <div class="container">
@@ -82,6 +54,24 @@
                 </div>
 
                 <div class="blog-posts" id="latest-posts">
+                    {% for post in site.posts limit:3 %}
+                    <article class="blog-card">
+                        <div class="blog-meta">
+                            <span class="blog-date">{{ post.date | date: "%B %d, %Y" }}</span>
+                            {% if post.tags and post.tags.size > 0 %}
+                            <div class="blog-tags">
+                                {% for tag in post.tags %}
+                                <span class="tag">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <h3 class="blog-title">{{ post.title }}</h3>
+                        <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+                        <a href="{{ post.url | relative_url }}" class="read-more">Read More →</a>
+                    </article>
+                    {% endfor %}
+
                     <article class="blog-card">
                         <div class="blog-meta">
                             <span class="blog-date">May 17, 2025</span>
@@ -127,35 +117,6 @@
                             bustub</h3>
                         <p class="blog-excerpt">An Hyper & Duckdb-like MVCC implementation in bustub, CMU 15-445 course
                             project4.</p>
-                        <a href="#" class="read-more">Read More →</a>
-                    </article>
-
-                    <article class="blog-card">
-                        <div class="blog-meta">
-                            <span class="blog-date">October 1, 2025</span>
-                            <div class="blog-tags">
-                                <span class="tag">Database Systems</span>
-                                <span class="tag">PostgreSQL</span>
-                                <span class="tag">Open Source</span>
-                                <span class="tag">Development</span>
-                            </div>
-                        </div>
-                        <h3 class="blog-title">The Hitchhiker's Guide to PostgreSQL Hacking</h3>
-                        <p class="blog-excerpt">A comprehensive guide to contributing to PostgreSQL development, covering everything from setting up your environment to submitting patches and engaging with the community.</p>
-                        <a href="blogs/postgres/postgres-contrib.md" class="read-more">Read More →</a>
-                    </article>
-
-                    <article class="blog-card">
-                        <div class="blog-meta">
-                            <span class="blog-date">January 10, 2024</span>
-                            <div class="blog-tags">
-                                <span class="tag">Systems</span>
-                                <span class="tag">OS</span>
-                            </div>
-                        </div>
-                        <h3 class="blog-title">I/O Schedulers: A Deep Dive</h3>
-                        <p class="blog-excerpt">Analyzing different I/O scheduling algorithms and their impact on system
-                            performance...</p>
                         <a href="#" class="read-more">Read More →</a>
                     </article>
                 </div>
@@ -306,38 +267,3 @@
                 </div>
             </div>
         </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>© 2024 Xuneng Zhou. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Toggle mobile menu
-        document.querySelector('.menu-toggle').addEventListener('click', function () {
-            document.querySelector('.nav-menu').classList.toggle('active');
-        });
-
-        // Blog filter functionality
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', function () {
-                // Toggle active class
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                this.classList.add('active');
-
-                // Show selected posts
-                const filter = this.getAttribute('data-filter');
-                document.querySelectorAll('.blog-posts').forEach(posts => {
-                    posts.classList.add('hidden');
-                });
-                document.getElementById(`${filter}-posts`).classList.remove('hidden');
-            });
-        });
-    </script>
-</body>
-
-</html>
