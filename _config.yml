@@ -44,6 +44,7 @@ exclude:
   - .sass-cache
   - .jekyll-cache
   - .jekyll-metadata
+  - blogs
 
 # Include files
 include:
