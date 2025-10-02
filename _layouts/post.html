@@ -6,24 +6,17 @@ layout: default
     .post-page {
         background-color: var(--bg-color);
         min-height: 100vh;
-    }
-    .post-header-section {
-        background-color: var(--bg-color);
-        padding-top: 140px;
-        padding-bottom: 140px;
-        border-bottom: 1px solid var(--border-color);
+        padding-top: 120px;
     }
     .blog-content {
         max-width: 900px;
         margin: 0 auto;
-        padding: 3rem 2rem;
+        padding: 2rem 2rem 4rem;
         background-color: var(--bg-color);
         line-height: 1.8;
     }
     .blog-header {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 2rem;
+        margin-bottom: 2.5rem;
     }
     .blog-title {
         font-size: 2.5rem;
@@ -127,13 +120,13 @@ layout: default
 </style>
 
 <div class="post-page">
-    <header class="post-header-section">
+    <article class="blog-content">
         <div class="blog-header">
             <a href="{{ '/blog/' | relative_url }}" class="back-link">
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            
+
             <h1 class="blog-title">{{ page.title }}</h1>
             <div class="blog-meta">
                 <span>{{ page.date | date: "%B %d, %Y" }}</span>
@@ -146,9 +139,7 @@ layout: default
                 {% endif %}
             </div>
         </div>
-    </header>
 
-    <article class="blog-content">
         <div class="post-content">
             {{ content }}
         </div>
