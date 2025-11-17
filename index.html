@@ -46,7 +46,7 @@ layout: default
         <!-- Blogs Section -->
         <section id="blogs" class="section">
             <div class="container">
-                <h2 class="section-title">Latest Writing</h2>
+                <h2 class="section-title">Selective Writing</h2>
 
                 <div class="blog-posts cards">
                     {% for post in site.posts limit:5 %}
@@ -148,24 +148,6 @@ layout: default
                             </div>
                         </div>
 
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h4>CS61C: RISC-V CPU</h4>
-                                <div class="project-links">
-                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                            <p>Designed and implemented a fully functional RISC-V CPU using Logisim Evolution. The project
-                                involved building datapath components (ALU, register file, control logic, etc.),
-                                integrating instruction decoding and execution for multiple RISC-V instruction types (R,
-                                I, B, S, J), and handling control flow and memory access. Developed a simple
-                                pipelined architecture and validated correctness through extensive testbenches.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">C</span>
-                                <span class="tech-tag">Linux</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
