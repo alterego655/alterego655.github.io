@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Per-Backend WAL Statistics: Bringing Granular Visibility to Write-Ahead Logging"
-date: 2025-11-20
+date: 2025-11-18
 tags: [PostgreSQL, Database Systems, Monitoring, WAL, Performance, Observability]
 excerpt: "How PostgreSQL gained per-backend WAL statistics visibility, enabling administrators to identify which connections generate the most WAL and diagnose write-heavy workloads with precision."
 ---
