@@ -280,6 +280,7 @@ nav {
 
 .blog-posts.cards {
     grid-template-columns: repeat(3, 1fr);
+    max-width: 100%;
 }
 
 .blog-card {

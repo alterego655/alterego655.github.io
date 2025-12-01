@@ -21,7 +21,7 @@ permalink: /blog/
         gap: 2rem;
     }
     .blog-posts.cards {
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
     }
     .blog-card {
         background-color: var(--bg-color);
@@ -104,6 +104,16 @@ permalink: /blog/
     .archive-list li a:hover {
         color: var(--primary-color);
         border-bottom-color: var(--primary-color);
+    }
+    @media (max-width: 992px) {
+        .blog-posts.cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 680px) {
+        .blog-posts.cards {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
 
